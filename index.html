@@ -49,7 +49,7 @@
             left: -2.25em;
         }
 
-        ol.unstyled li {
+        ol.unstyled li, ul.unstyled li {
             list-style: none;
         }
 
@@ -117,6 +117,11 @@
     &lt;/P&gt;
 &lt;/HTML&gt;
                         </code></pre>
+                    <aside class="notes" data-markdown>
+- Simple limited set of tags
+- Only interactivity is following links
+- Browser renders page once, then it's static
+                    </aside>
                     </section>
                 </section>
 
@@ -126,16 +131,78 @@
                     </section>
                     <section>
                         <ol class="unstyled history-list">
-                            <li class="fragment"><div class="item-title">1993:</div><div class="item-content">HTML specification released</div></li>
+                            <li><div class="item-title">1993:</div><div class="item-content">HTML 1.0 specification released</div></li>
+                            <li class="fragment"><div class="item-title">1994:</div><div class="item-content">W3C is founded to promote open standards for the web</div></li>
                             <li class="fragment"><div class="item-title">1995:</div><div class="item-content">Browser wars - Microsoft and Netscape battle for biggest browser market share</div></li>
                             <li class="fragment"><div class="item-title">April 1995:</div><div class="item-content">Brendan Eich creates JavaScript for Netscape in 10 days</div></li>
                             <li class="fragment"><div class="item-title">September 1995:</div><div class="item-content">Netscape releases JavaScript in the Netscape Navigator 2.0 beta</div></li>
                             <li class="fragment"><div class="item-title">August 1996:</div><div class="item-content">Microsoft releases a JavaScript clone called JScript for IE 3.0</div></li>
-                            <li class="fragment"><div class="item-title">June 1997:</div><div class="item-content">JavaScript becomes standardized as ECMA-262 (officially called ECMAScript now)</div></li>
+                            <li class="fragment"><div class="item-title">June 1997:</div><div class="item-content">W3C standardized JS as ECMA-262 (officially called ECMAScript now)</div></li>
+                            <li class="fragment"><div class="item-title">December 1997:</div><div class="item-content">HTML 4 specification is published</div></li>
                         </ol>
                     </section>
                     <section>
-                        <h2>And how exactly is this relevant?</h2>
+                        <h1>And how exactly is this relevant?</h1>
+                    </section>
+                    <section>
+                        <h3>JS needs to interact with the page in some way</h3>
+                        <h4 class="fragment">... but there is no standard</h4>
+                        <h5 class="fragment">... so JS is useless</h5>
+                    </section>
+                    <section>
+                        <h1>Flash forward</h1>
+                        <h2 class="fragment">This presentation is running in the browser</h2>
+                        <h2 class="fragment">Using JS</h2>
+                        <h3 class="fragment">So what happened?</h3>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h1>How do browsers work?</h1>
+                    </section>
+                    <section>
+                        <ul class="unstyled">
+                            <li>Browser gets HTML from server</li>
+                            <li class="fragment">Browser parses HTML into a tree representation</li>
+                            <li class="fragment">Browser requests external files if mentioned in HTML (JS, stylesheets, images)</li>
+                            <li class="fragment">Layout Engine parses the HTML tree and stylesheets, renders image to screen</li>
+                            <li class="fragment">Browser runs JS</li>
+                            <li class="fragment">Browser waits for user interaction</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Did you just say tree?</h2>
+                        <img class="fragment" src="lib/images/htmltree.gif" style="width: 100%;">
+                        <span class="fragment">Shamelessly lifted from w3schools</span>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h1>The DOM</h1>
+                    </section>
+                    <section>
+                        <h2>Some more history</h2>
+                        <ol class="unstyled history-list">
+                            <li><div class="item-title">1997:</div><div class="item-content">MS releases IE 4.0, Netscape releases Netscape 4.0 - Both with support for Dynamic HTML (DHTML)</div></li>
+                            <li class="fragment"><div class="item-title">1998:</div><div class="item-content">W3C publishes DOM Level 1 standard</div></li>
+                            <li class="fragment"><div class="item-title">2000:</div><div class="item-content">W3C publishes DOM Level 2 standard</div></li>
+                            <li class="fragment"><div class="item-title">2004:</div><div class="item-content">W3C publishes DOM Level 3 standard</div></li>
+                        </ol>
+
+                        <aside class="notes" data-markdown>
+- DHTML is the combination of JS, a rudimentary DOM and HTML
+- DHTML does not follow the same standard for all browsers
+    - maintenance nightmare
+- DOM Level 1 allows for changing any portion of the document
+    - Browsers still not all standards compliant, IE and Netscape 4.0 still widespread
+- DOM Level 2 introduces `getElementById`
+                        </aside>
+                    </section>
+                    <section>
+                        <h1>That's great</h1>
+                        <h1>But what does this all mean?</h1>
                     </section>
                 </section>
             </div>
@@ -154,6 +221,9 @@
                 progress: true,
                 history: true,
                 center: true,
+
+                width: 1280,
+                height: 720,
 
                 theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
                 transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
