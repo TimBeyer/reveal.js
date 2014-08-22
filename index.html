@@ -1,323 +1,175 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+    <head>
+        <meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+        <title>WTF is the DOM?</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/default.css" id="theme">
 
-		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+            document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
 
-		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
-		<script>
-			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
-		</script>
+        <style>
 
-		<style>
+        .reveal .text-yellow-bg {
+            background-color: rgba(0, 0, 0, 0.7);
+            height: 1em;
+            display: inline-block;
+            margin-bottom: 0.1em;
+        }
 
-		.reveal .text-yellow-bg {
-			background-color: rgba(0, 0, 0, 0.7);
-			height: 1em;
-			display: inline-block;
-			margin-bottom: 0.1em;
-		}
+        section p {
+            font-size: 1.25em;
+        }
 
-		section p {
-			font-size: 1.25em;
-		}
+        .reveal .talk-title {
+            font-size: 2.5em;
+            margin-bottom: 2em;
+            line-height: 1.1em;
+        }
 
-		.reveal .talk-title {
-			font-size: 2.5em;
-			margin-bottom: 2em;
-			line-height: 1.1em;
-		}
+        .reveal .welcome {
+            text-align: left;
+            font-size: 3em;
+            position: relative;
+            top: -1.25em;
+            left: -2.25em;
+        }
 
-		.reveal .welcome {
-			text-align: left;
-			font-size: 3em;
-			position: relative;
-			top: -1.25em;
-			left: -2.25em;
-		}
+        ol.unstyled li {
+            list-style: none;
+        }
 
-		</style>
+        ol.history-list li{
+            margin-bottom: 0.5em;
+        }
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+        li div.item-title {
+            font-weight: bold;
+            color: #FFFFFF;
+        }
 
-	<body>
+        li div.item-content {
+            margin-left: 0.5em;
+        }
+        </style>
 
-		<div class="reveal">
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
+    <body>
 
-				<section>
-					<img class="logo" src="lib/images/logo.svg" width="45%" alt="Down arrow">
+        <div class="reveal">
 
-				</section>
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
 
-				<section>
-					<h1>WEBXP</h1>
-					<h3>WEB eXPerience</h3>
-					<p style="position: relative; top: 6em;">
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-					</p>
-				</section>
+                <section>
+                    <img class="logo" src="lib/images/logo.svg" width="45%" alt="Down arrow">
+                </section>
 
-				<section data-background="http://media.emercedesbenz.com.s3.amazonaws.com/magazine/wp-content/uploads/mercedes-benz-73734064026.jpg">
-					<h1 class="welcome">
-						<span class="text-yellow-bg">Welcome to</span><br />
-						<span class="text-yellow-bg">Sprint 20</span><br />
-						<span class="text-yellow-bg">Review!</span></h1>
-				</section>
+                <section>
+                    <section>
+                        <h1 class="talk-title">What's that thing called DOM?</h1>
+                    </section>
+                    <section>
+                        <h2>This is the DOM</h2>
+                        <img src="lib/images/the-dom.png">
+                    </section>
+                    <section>
+                        <h2>Thank you!</h2>
+                        <p>Any questions?</p>
+                    </section>
+                </section>
 
-				<!-- TALK #1 -->
-				<section>
-					<section>
-						<h1 class="talk-title">Copy order for logged-in user</h1>
-						<h3>Pavel</h3>
-					</section>
-					<section>
-						<h2>Problem</h2>
-						<p>user logs in on menu page or checkout page and lose his shopping cart</p>
-					</section>
-					<section>
-						<h2>Solution</h2>
-						<p>duplicate an order (thanks, API!)</p>
-					</section>
-					<section>
-						<h2>Hack</h2>
-						<p>remove log-in from OCP</p>
-					</section>
-				</section>
+                <section>
+                    <section>
+                        <h1>Let's rewind!</h1>
+                    </section>
+                    <section>
+                        <h2>In the beginning, there was HTML</h2>
+                        <h4 class="fragment">... and everything was static and boring</h4>
+                    </section>
+                    <section>
+                        <pre><code>
+&lt;HTML&gt;
+    &lt;TITLE&gt;
+    A HTML page
+    &lt;/TITLE&gt;
+    &lt;P&gt;
+        And a paragraph
+        &lt;A HREF="somepage.html"&gt;And a link&lt;/A&gt;
+    &lt;/P&gt;
+&lt;/HTML&gt;
+                        </code></pre>
+                    </section>
+                </section>
 
-				<!-- TALK #2 -->
-				<section>
-					<section>
-						<h1 class="talk-title">Trim down Utilitybelt</h1>
-						<h3>Pavel</h3>
-					</section>
-					<section>
-						<h2>Problem</h2>
-						<p>300kb (!) of unused code</p>
-					</section>
-					<section data-background="http://media.giphy.com/media/B0yHMGZZLbBxS/giphy.gif">
-						<h2 style="display: inline-block; background-color: #000; font-size: 2.5em; margin-top: 4em;">kill it with fire!</h2>
-					</section>
-					<section>
-						<h2>Result</h2>
-						<p>87kb gzipped, serving shopping cart, login flow & order checkout logic</p>
-					</section>
-				</section>
+                <section>
+                    <section>
+                        <h1>A little history</h1>
+                    </section>
+                    <section>
+                        <ol class="unstyled history-list">
+                            <li class="fragment"><div class="item-title">1993:</div><div class="item-content">HTML specification released</div></li>
+                            <li class="fragment"><div class="item-title">1995:</div><div class="item-content">Browser wars - Microsoft and Netscape battle for biggest browser market share</div></li>
+                            <li class="fragment"><div class="item-title">April 1995:</div><div class="item-content">Brendan Eich creates JavaScript for Netscape in 10 days</div></li>
+                            <li class="fragment"><div class="item-title">September 1995:</div><div class="item-content">Netscape releases JavaScript in the Netscape Navigator 2.0 beta</div></li>
+                            <li class="fragment"><div class="item-title">August 1996:</div><div class="item-content">Microsoft releases a JavaScript clone called JScript for IE 3.0</div></li>
+                            <li class="fragment"><div class="item-title">June 1997:</div><div class="item-content">JavaScript becomes standardized as ECMA-262 (officially called ECMAScript now)</div></li>
+                        </ol>
+                    </section>
+                    <section>
+                        <h2>And how exactly is this relevant?</h2>
+                    </section>
+                </section>
+            </div>
 
-				<!-- TALK #3 -->
-				<section>
-					<section>
-						<h1 class="talk-title">Version tag in page source</h1>
-						<h3>Pavel</h3>
-					</section>
-					<section>
-						<h2>Hey, what is deployed on lab11?</h2>
-						<p>Solution: sha1 import on build stage</p>
-					</section>
-				</section>
+        </div>
 
-				<!-- TALK #4 -->
-				<section>
-					<section>
-						<h1 class="talk-title">Order category events for GA</h1>
-						<h3>Piotr</h3>
-					</section>
-					<section>
-						<h2>problem</h2>
-						<p>we need to track order flow with GA.<br />The corresponding actions to track are nested deeply into different elements of ucb-client and utilitybelt</p>
-					</section>
-					<section>
-						<h2>solution</h2>
-						<p>provide all relevant info to GA<br />via Google Tag Manager Data Layer</p>
-					</section>
-					<section>
-						<h2>result</h2>
-						<p>events for order flow visible in GA</p>
-					</section>
-				</section>
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.min.js"></script>
 
-				<!-- TALK #5 -->
-				<section>
-					<section>
-						<h1 class="talk-title">GTM/GA - more tracking</h1>
-						<h3>Timur</h3>
-					</section>
-					<section>
-						<h3>Added some useful per-page stuff available in GTM</h3>
-					</section>
-					<section>
-						<h2>More events in GA</h2>
-					</section>
-					<section>
-						<h3>Basic ECommerce data sent to Google Analytics</h3>
-					</section>
-				</section>
+        <script>
 
-				<!-- TALK #6 -->
-				<section>
-					<section>
-						<h1 class="talk-title">Labmachines</h1>
-						<h3>Timur</h3>
-					</section>
-					<section>
-						<h3>Problem:</h3>
-						<p>
-							thing breaks, takes time to investigate what’s wrong
-						</p>
-					</section>
-					<section>
-						<h3>What's done:</h3>
-						<p>
-							taking care of labmachines (brief investigation + interaction with devops if something happens)
-						</p>
-					</section>
-				</section>
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
 
-				<!-- TALK #7 -->
-				<section>
-					<section>
-						<h1 class="talk-title">Cookie Migration</h1>
-						<h3>Timur</h3>
-					</section>
-					<section>
-						<h3>Problem:</h3>
-						<p>
-							different configuration/format for cookies on core_frontend and ucb-client
-						</p>
-					</section>
-					<section>
-						<img src="https://dl.dropboxusercontent.com/spa/i1lckqgmkztavia/kz6rvn49.png" />
-						<p>To expire, Set-Cookie header in that case should magicly appear twice (both with and without Domain)</p>
-					</section>
-					<section>
-						<img src="https://dl.dropboxusercontent.com/spa/i1lckqgmkztavia/ldkr5dsd.png" />
-					</section>
-					<section>
-						<h3>Solution:</h3>
-						<ul>
-							<li>Modules for migrating cookies</li>
-							<li>Paired with Tim, patching core_frontend a bit</li>
-						</ul>
-					</section>
-				</section>
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
 
-				<!-- TALK #8 -->
-				<section>
-					<section>
-						<h1 class="talk-title">Route reversal</h1>
-						<h3>Tim</h3>
-					</section>
-					<section>
-						<h3>Problem:</h3>
-						<ul>
-							<li>Page URLs differ between countries, but we don't want to hardcode the differences</li>
-							<li>There are several URLs for one type of page, depending on the amount of information we have available</li>
-						</ul>
-					</section>
-					<section>
-						<pre>
-// DE restaurants
-/lieferservices-berlin/
-/lieferservices-berlin/10713/
-/lieferservices-berlin/10713/sushi-bestellen
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
 
-// AU restaurants
-/takeaway-sydney/
-/takeaway-sydney/ultimo/
-/takeaway-sydney/ultimo/sushi-delivery
+        </script>
 
-// DE menu
-/lieferservices-berlin/irgendein-lieferservice/1337
-
-// AU menu
-/takeaway-sydney/ultimo/some-restaurant/123
-/takeaway-sydney/some-restaurant/123
-						</pre>
-					</section>
-					<section>
-						<h3>Solution:</h3>
-						<ul>
-							<li>Automate parsing the routes, analyze structure, create functions that can fill in the details into our route URL definition</li>
-							<li>Find route that matches given data most closely, fill in data and return it</li>
-						</ul>
-					</section>
-					<section>
-						<pre>
-var routesManager = require('app/routes');
-routesManager.reverse('restaurantList', {
-	city: 'sydney',
-	category: 'sushi'
-}).url;
->> '/takeaway-sydney/sushi-delivery'
-
-routesManager.reverse('restaurantList', {
-	city: 'sydney',
-	suburb: 'ultimo'
-}).url;
->> '/takeaway-sydney/ultimo'
-						</pre>
-					</section>
-				</section>
-
-
-				<section data-background="http://media3.giphy.com/media/Kc3FsPX7MWtsQ/giphy.gif">
-					<h1>Thank you!</h1>
-				</section>
-
-
-			</div>
-
-		</div>
-
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.min.js"></script>
-
-		<script>
-
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
-
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
-
-				// Optional libraries used to extend on reveal.js
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
-
-		</script>
-
-	</body>
+    </body>
 </html>
