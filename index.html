@@ -159,7 +159,7 @@
 
                 <section>
                     <section>
-                        <h1>How do browsers work?</h1>
+                        <h1>Interlude - How do browsers work?</h1>
                     </section>
                     <section>
                         <ul class="unstyled">
@@ -175,12 +175,19 @@
                         <h2>Did you just say tree?</h2>
                         <img class="fragment" src="lib/images/htmltree.gif" style="width: 100%;">
                         <span class="fragment">Shamelessly lifted from w3schools</span>
+                        <aside class="notes" data-markdown>
+- Child, Parent, Sibling
+                        </aside>
                     </section>
                 </section>
 
                 <section>
                     <section>
-                        <h1>The DOM</h1>
+                        <h1>What happened?</h1>
+                        <h1>The DOM happened!</h1>
+                    </section>
+                    <section>
+                        <h2>The DOM is the interface to query and manipulate the internal tree representation of the page in the browser from JavaScript</h2>
                     </section>
                     <section>
                         <h2>Some more history</h2>
@@ -198,11 +205,40 @@
 - DOM Level 1 allows for changing any portion of the document
     - Browsers still not all standards compliant, IE and Netscape 4.0 still widespread
 - DOM Level 2 introduces `getElementById`
+- DOM Level 3 is the current standard
                         </aside>
                     </section>
                     <section>
                         <h1>That's great</h1>
-                        <h1>But what does this all mean?</h1>
+                        <h1>But why is this such a big deal?</h1>
+                    </section>
+                    <section>
+                        <ul class="unstyled">
+                            <li>JavaScript can change about any aspect of the page at any time</li>
+                            <li>JavaScript can listen to user interaction events and react to them</li>
+                        </ul>
+                        <aside class="notes" data-markdown>
+- Change styles
+- Change form inputs
+- Replace entire parts of the page
+- Animate things
+- Programmatically create new content for the user without having to send a request to the client
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h1>What could possibly go wrong?</h1>
+                    </section>
+                    <section>
+                        <ul class="unstyled">
+                            <li>Having a standard does not mean that everybody follows the standard</li>
+                            <li class="fragment">More interactivity means more potentially buggy behavior</li>
+                            <li class="fragment">Changes to the DOM are hard to track and reason about</li>
+                            <li class="fragment">All scripts have access to the DOM. They all need to interact without causing trouble</li>
+
+                        </ul>
                     </section>
                 </section>
             </div>
